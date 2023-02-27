@@ -7,21 +7,22 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.io.Serializable;
 import java.util.Set;
 
-@Entity
-public class User implements Serializable {
+@Entity(name = "")
+public class Person implements Serializable {
 
     @Id
     @Column(length = 100)
     private String username;
     private String password;
+    @Column(length = 100)
     private String lastname;
+    @Column(length = 100)
     private String firstname;
     private String email;
 
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Floor floor;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "person")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<Event> events;
 
@@ -85,9 +86,9 @@ public class User implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        Person person = (Person) o;
 
-        return username.equals(user.username);
+        return username.equals(person.username);
     }
 
     @Override

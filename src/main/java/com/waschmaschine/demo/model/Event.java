@@ -15,7 +15,7 @@ public class Event implements Serializable {
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
-    private User user;
+    private Person person;
     @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime date;
 
@@ -25,8 +25,8 @@ public class Event implements Serializable {
         return id;
     }
 
-    public User getUser() {
-        return user;
+    public Person getUser() {
+        return person;
     }
 
     public LocalDateTime getDate() {
@@ -41,8 +41,8 @@ public class Event implements Serializable {
         this.id = id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Person person) {
+        this.person = person;
     }
 
     public void setDate(LocalDateTime date) {
