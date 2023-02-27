@@ -5,7 +5,7 @@ import com.waschmaschine.demo.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.List;
 
 @Service
 public class PersonService {
@@ -16,7 +16,7 @@ public class PersonService {
         return personRepository.findPersonByUsername(username);
     }
 
-    public Collection<Person> findAllPersons(){
+    public List<Person> findAllPersons(){
         return personRepository.findAll();
     }
 
@@ -28,7 +28,7 @@ public class PersonService {
         return personRepository.save(person);
     }
 
-    public void deletePerson(Person person){
-        personRepository.delete(person);
+    public void deleteEmployeeByUsername(String username) {
+        personRepository.deletePersonByUsername(username);
     }
 }
