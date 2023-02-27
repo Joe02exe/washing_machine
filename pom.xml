@@ -12,7 +12,7 @@
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
-	<description>washing machine project Südtriolerheim</description>
+	<description>washing machine project Südtirolerheim</description>
 	<properties>
 		<java.version>19</java.version>
 	</properties>
