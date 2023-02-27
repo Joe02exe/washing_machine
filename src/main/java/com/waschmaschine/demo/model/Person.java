@@ -1,5 +1,6 @@
 package com.waschmaschine.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -22,12 +23,13 @@ public class Person implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private Floor floor;
-    @OneToMany(mappedBy = "person")
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<Event> events;
-
-    @Enumerated(EnumType.STRING)
-    private UserRole userRole;
 
     public String getUsername() {
         return username;
@@ -51,6 +53,10 @@ public class Person implements Serializable {
 
     public Floor getFloor() {
         return floor;
+    }
+
+    public UserRole getRole() {
+        return role;
     }
 
     public Set<Event> getEvents() {
@@ -79,6 +85,10 @@ public class Person implements Serializable {
 
     public void setFloor(Floor floor) {
         this.floor = floor;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     public void setEvents(Set<Event> events) {
