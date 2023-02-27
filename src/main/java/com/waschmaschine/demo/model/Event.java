@@ -1,5 +1,7 @@
 package com.waschmaschine.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -16,6 +18,8 @@ public class Event implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
     private Person person;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime date;
 
     private int minutesWashed;
@@ -24,6 +28,7 @@ public class Event implements Serializable {
         return id;
     }
 
+    @JsonBackReference
     public Person getUser() {
         return person;
     }
