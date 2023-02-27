@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -34,11 +33,15 @@ public class EventService {
     }
 
     public List<Event> getNewestEvents(){
-        return getAllEvents().stream()
+        List<Event> events =  getAllEvents().stream()
                 .filter(event -> event.getDate()
                         .isAfter(LocalDateTime.now()))
                 .sorted(Comparator.comparing(Event::getDate))
-                .collect(Collectors.toList()).subList(0,4);
+                .toList();
+        if (events.size() <=5){
+            return events;
+        }
+        return events.subList(0,4);
     }
 
     public Event addEvent(Event event){
