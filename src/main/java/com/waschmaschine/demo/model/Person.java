@@ -26,6 +26,9 @@ public class Person implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<Event> events;
 
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
+
     public String getUsername() {
         return username;
     }
