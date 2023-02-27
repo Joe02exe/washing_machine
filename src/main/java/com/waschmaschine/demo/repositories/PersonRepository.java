@@ -1,4 +1,7 @@
 package com.waschmaschine.demo.repositories;
 
-public interface PersonRepository {
+import com.waschmaschine.demo.model.Person;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PersonRepository extends JpaRepository<Person, String> {
 }
