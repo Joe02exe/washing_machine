@@ -4,10 +4,13 @@ import com.waschmaschine.demo.model.Person;
 import com.waschmaschine.demo.model.UserRole;
 import com.waschmaschine.demo.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class AppController {
@@ -15,18 +18,25 @@ public class AppController {
     private PersonService personService;
     @GetMapping("")
     public String viewHomePage(){
-        return "index.html";
+        return "index";
     }
 
     @GetMapping("/register")
     public String registerForm(Model model){
         model.addAttribute("person", new Person());
-        return "register.html";
+        return "register";
     }
     @PostMapping("process_register")
     public String processRegistration(Person person){
-        person.setRole(UserRole.USER);
         personService.addPerson(person);
-        return "register_success.html";
+        return "register_success";
+    }
+
+    @GetMapping("list_users")
+    public String getUserList(Model model){
+        List<Person> persons = personService.findAllPersons();
+        model.addAttribute("listPersons", persons);
+        model.addAttribute("loggedInUser", SecurityContextHolder.getContext().getAuthentication().getName());
+        return "users";
     }
 }
