@@ -1,7 +1,14 @@
 package com.waschmaschine.demo.model;
 
-public enum UserRole {
+import org.springframework.security.core.GrantedAuthority;
+
+public enum UserRole implements GrantedAuthority {
     ADMIN,
     USER,
-    GUEST
+    GUEST;
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }
