@@ -1,9 +1,9 @@
 package com.waschmaschine.demo.Controller;
 
 import com.waschmaschine.demo.model.Person;
-import com.waschmaschine.demo.model.UserRole;
 import com.waschmaschine.demo.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +33,7 @@ public class AppController {
     }
 
     @GetMapping("list_users")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String getUserList(Model model){
         List<Person> persons = personService.findAllPersons();
         model.addAttribute("listPersons", persons);

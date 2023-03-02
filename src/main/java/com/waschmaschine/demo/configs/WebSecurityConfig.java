@@ -42,13 +42,13 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .requestMatchers("/list_users").authenticated()
+                .requestMatchers("/list_users").hasAuthority("ADMIN")
                 .anyRequest()
                 .permitAll()
                 .and()
                 .formLogin()
                     .usernameParameter("username")
-                    .defaultSuccessUrl("/list_user")
+                    .defaultSuccessUrl("/list_users")
                     .permitAll()
                 .and()
                 .logout()

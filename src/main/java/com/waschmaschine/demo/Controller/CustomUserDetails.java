@@ -2,8 +2,10 @@ package com.waschmaschine.demo.Controller;
 
 import com.waschmaschine.demo.model.Person;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -13,11 +15,12 @@ public class CustomUserDetails implements UserDetails {
 
     public CustomUserDetails(Person person) {
         this.person = person;
+
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(person.getRole());
+        return new ArrayList<>(Collections.singleton(new SimpleGrantedAuthority(person.getRole().toString())));
     }
 
     @Override
