@@ -33,14 +33,10 @@ public class PersonService implements UserDetailsService {
 
     public Person addPerson(Person person){
         person.setRole(UserRole.USER);
-        person.setPassword(WebSecurityConfig.passwordEncoder().encode(person.getPassword()));
         return personRepository.save(person);
     }
 
     public Person updatePerson(Person person){
-        if(!Objects.equals(findPersonByUsername(person.getUsername()).getPassword(), person.getUsername())){
-            person.setPassword(WebSecurityConfig.passwordEncoder().encode(person.getPassword()));
-        }
         return personRepository.save(person);
     }
 

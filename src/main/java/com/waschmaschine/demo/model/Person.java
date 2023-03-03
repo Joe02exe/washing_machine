@@ -1,6 +1,7 @@
 package com.waschmaschine.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.waschmaschine.demo.configs.WebSecurityConfig;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -12,7 +13,7 @@ import java.util.Set;
 public class Person implements Serializable {
 
     @Id
-    @Column(length = 100)
+    @Column(length = 100, unique = true)
     private String username;
     private String password;
     @Column(length = 100)
@@ -68,7 +69,7 @@ public class Person implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = WebSecurityConfig.passwordEncoder().encode(password);
     }
 
     public void setLastname(String lastname) {
