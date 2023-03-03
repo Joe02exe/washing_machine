@@ -20,7 +20,12 @@ public class Event implements Serializable {
     private Person person;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime date;
+    private LocalDateTime beginDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime endDate;
+
+    private WashingMachine washingMachine;
 
     private int minutesWashed;
 
@@ -33,8 +38,20 @@ public class Event implements Serializable {
         return person;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getBeginDate() {
+        return beginDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public WashingMachine getWashingMachine() {
+        return washingMachine;
+    }
+
+    public Person getPerson() {
+        return person;
     }
 
     public int getMinutesWashed() {
@@ -49,12 +66,24 @@ public class Event implements Serializable {
         this.person = person;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setBeginDate(LocalDateTime beginDate) {
+        this.beginDate = beginDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setWashingMachine(WashingMachine washingMachine) {
+        this.washingMachine = washingMachine;
     }
 
     public void setMinutesWashed(int minutesWashed) {
         this.minutesWashed = minutesWashed;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     @Override
