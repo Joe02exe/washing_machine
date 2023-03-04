@@ -1,6 +1,6 @@
 # Washing machine project
 
-This project idea is based on a real-life problem: We, the students from the "Südtirolerheim Innsbruck", have 2 washing machines in our student residence, so you might guess that it is not that easy to get one two wash your clothes. So I decided to face the problem and find a solution. But it would be too easy and basic  to just use a calendar to make reservations for one of the two washing machines... So I decided I would make a Spring Boot Application with java, because we just learned about it in the previous semester.
+This project idea is based on a real-life problem: We, the students from the "Südtirolerheim Innsbruck", have 2 washing machines in our student residence, so you might guess that it is not that easy to get one two wash your clothes. So I decided to face the problem and find a solution. But it would be too easy and basic to just use a calendar to make reservations for one of the two washing machines... So I decided I would make a Spring Boot Application with java, because we just learned about it in the previous semester.
 
 ## Installation
 
@@ -40,7 +40,7 @@ In the end a homepage like this should be displayed when opening up `localhost:8
 
 The project is far away from being finished. There is still a lot to do, like:
 
-- writing JUnit Tests
+- writing JUnit Tests (so there may still be a few bugs)
 - adding reservation functionality for users to actually make a reservation for one of the machines
 - adding user-profile to homepage so users can see and change their attributes
 - maybe a global Dashboard to show the users with the most washed minutes
