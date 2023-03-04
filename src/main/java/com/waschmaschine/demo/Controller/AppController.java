@@ -5,14 +5,11 @@ import com.waschmaschine.demo.model.Person;
 import com.waschmaschine.demo.model.WashingMachine;
 import com.waschmaschine.demo.services.EventService;
 import com.waschmaschine.demo.services.PersonService;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("")
@@ -77,9 +75,10 @@ public class AppController {
         String machineTwoNow = event2 == null ? "Waschmaschine 2 ist gerade frei" : event2.getPerson().getUsername() + "(" + event2.getPerson().getFloor() +")" + " wäscht gerade";
         model.addAttribute("machineTwoNow", machineTwoNow);
         model.addAttribute("machineOneNow", machineOneNow);
-        System.out.println(machineOneNow);
-        System.out.println(machineOneHundredFiftyMinutes);
-        model.addAttribute("loggedInUser", SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("isAuthenticated", !SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"));
+        model.addAttribute("loggedUser", SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("isAdmin", SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("ADMIN")));
+
         return "index";
     }
 
