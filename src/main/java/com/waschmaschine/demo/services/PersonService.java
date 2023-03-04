@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class PersonService implements UserDetailsService {
@@ -42,6 +41,12 @@ public class PersonService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Person person = findPersonByUsername(username);
+        if (person == null) {throw new UsernameNotFoundException("Username was not found");}
         return new CustomUserDetails(person);
+    }
+
+    public String generatePassword(){
+        int random = (int)(Math.random()*1000000000);
+        return String.valueOf(random);
     }
 }
