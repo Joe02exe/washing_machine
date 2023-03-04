@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+</head>
+<body>
+<div style="background-color: #cdebf9">
+  <header class="container d-flex align-items-center justify-content-center justify-content-md-between py-3 border-bottom flex-grow-1">
+    <a href="/" class="d-flex flex-grow-0 align-items-center">
+      <!---href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" --->
+      <img class="bi me-2" width="60" src="../static/media/homepage_washing_machine.png" th:src="@{media/homepage_washing_machine.png}">
+    </a>
+
+    <div class="col-md-3 text-end justify-content-end d-flex">
+      <form th:action="@{/logout}" method="post">
+        <input type="submit" class="btn btn-primary m-1" value="Logout">
+      </form>
+    </div>
+  </header>
+</div>
+<div class="container text-center">
+  <div class="container text-center">
+    <div>
+      <h1>List of all Users</h1>
+    </div>
+    <div>
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Username</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>Email</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbo>
+          <tr th:each="person: ${listPersons}">
+            <td th:text="${person.getUsername()}">Username</td>
+            <td th:text="${person.getFirstname()}">Vorname</td>
+            <td th:text="${person.getLastname()}">Nachname</td>
+            <td th:text="${person.getEmail()}">Email</td>
+            <td th:text="${person.getFloor()}">Stock</td>
+
+          </tr>
+        </tbo>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

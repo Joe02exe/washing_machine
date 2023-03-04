@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+</head>
+<body>
+<section class="vh-100" style="background-color: #cdebf9">
+  <div class="container">
+    <header class="d-flex align-items-center justify-content-center justify-content-md-between py-3 border-bottom flex-grow-1">
+      <a href="/" class="d-flex flex-grow-0 align-items-center">
+        <img class="bi me-2" width="60" src="../static/media/homepage_washing_machine.png" th:src="@{media/homepage_washing_machine.png}">
+      </a>
+
+      <div class="col-md-3 text-end justify-content-evenly flex-grow-1">
+        <a th:href="@{/register}" class="btn btn-primary m-1">Registrieren</a>
+        <a th:href="@{/login}" class="btn btn-outline-primary m-1">Anmelden</a>
+        <a th:href="@{/guest}" class="btn btn-outline-primary m-1">Als Gast anmelden</a>
+      </div>
+    </header>
+  </div>
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-start">Registrier dich!</h3>
+            <form th:action="@{/process_register}" method="post" th:object="${person}" id="registrationForm">  <!---person comes from variable in AppController--->
+              <div class="alert alert-danger">
+                Username besetzt! Wähle einen anderen Usernamen
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="Vorname" th:field="*{firstname}" required minlength="2"/>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Nachname" th:field="*{lastname}" required minlength="2"/>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <input type="text" class="form-control form-control-lg" id="username" placeholder="Username" th:field="*{username}" required minlength="2"/>
+                    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username already in use</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <input type="password" class="form-control form-control-lg" id="password" placeholder="Passwort" th:field="*{password}" required minlength="8"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="email" id="emailAddress" class="form-control form-control-lg" placeholder="Email" th:field="*{email}" required/>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+                  <div>
+                    <select class="select form-control-lg" id="floor" th:field="*{floor}" required>
+                      <option value="EG_NORD">EG Nord</option>
+                      <option value="EG_OST">EG Ost</option>
+                      <option value="FIRST_OG_NORD">1. OG Nord</option>
+                      <option value="FIRST_OG_OST">1. OG Ost</option>
+                      <option value="SECOND_OG_NORD">2. OG Nord</option>
+                      <option value="SECOND_OG_OST">2. OG Ost</option>
+                      <option value="THIRD_OG">3. OG</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 text-center">
+                <input class="btn btn-primary btn-lg" type="submit" value="Registrieren" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,2 @@
+INSERT INTO person (username, email, firstname, lastname, floor, password, role) VALUES ('admin', 'admin@gmail.com', 'Admin', 'Istrator', 'SECOND_OG_NORD', '$2a$12$mfFa7fJ43FThFU8aJ7gNcODO8TchRbnh8GKzmDvUjGCSE4OUC5IPm', 'ADMIN');
+INSERT INTO person (username, email, firstname, lastname, floor, password, role) VALUES ('user1', 'user1@gmail.com', 'Max', 'Mustermann', 'EG_OST', '$2a$12$mfFa7fJ43FThFU8aJ7gNcODO8TchRbnh8GKzmDvUjGCSE4OUC5IPm', 'USER');
