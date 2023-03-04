@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registration  success</title>
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+    <title>Gast-Login</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
 </head>
 <body>
-<div class="container ">
-    <h3>Du hast dich soeben registriert!</h3>
-    <h4>Du kannst dich nun <a th:href="@{/login}">anmelden</a></h4>
-</div>
+<section class="vh-100" style="background-color: #cdebf9">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <h3 class="text-start" >Du hast dich soeben registriert!</h3>
+                        <div class="fs-5">Du kannst dich nun
+                        </div>
+                        <a th:href="@{/login}" class="btn btn-primary m-1">Anmelden</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
