@@ -48,6 +48,7 @@ public class WebSecurityConfig {
                 .and()
                 .formLogin()
                     .loginPage("/login")
+                    .usernameParameter("username")
                     .defaultSuccessUrl("/")
                     .permitAll()
                     .failureUrl("/login?error=true")
