@@ -31,7 +31,7 @@ public class LoginController {
     public String processRegistration(Person person, Model model){
         if(personService.findPersonByUsername(person.getUsername())!=null){
             model.addAttribute("person", new Person());
-            return "registerFail";
+            return "guestLoginFail";
         }
         String pw = personService.generatePassword();
         person.setPassword(pw);
