@@ -1,6 +1,5 @@
 package com.waschmaschine.demo.services;
 
-import com.waschmaschine.demo.configs.WebSecurityConfig;
 import com.waschmaschine.demo.Controller.CustomUserDetails;
 import com.waschmaschine.demo.model.Person;
 import com.waschmaschine.demo.model.UserRole;
@@ -20,11 +19,7 @@ public class PersonService implements UserDetailsService {
     private PersonRepository personRepository;
 
     public Person findPersonByUsername(String username) throws UsernameNotFoundException{
-        Person person = personRepository.findPersonByUsername(username);
-        if (person == null){
-            throw new UsernameNotFoundException("Username: " + username +" was not found");
-        }
-        return person;
+        return personRepository.findPersonByUsername(username);
     }
 
     public List<Person> findAllPersons(){

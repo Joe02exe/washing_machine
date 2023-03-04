@@ -6,10 +6,6 @@
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
 </head>
 <body>
-<script>
-  const { registrationForm } = document.forms;
-  registrationForm.reset();
-</script>
 <section class="vh-100" style="background-color: #cdebf9">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
@@ -18,11 +14,6 @@
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-start">Registrier dich!</h3>
             <form th:action="@{/process_register}" method="post" th:object="${person}" id="registrationForm">  <!---person comes from variable in AppController--->
-              <div th:if="${param.used} ">
-                <div class="alert alert-danger">
-                  Username besetzt! Wähle einen anderen Usernamen!
-                </div>
-              </div>
               <div class="row">
                 <div class="col-md-6 mb-4">
 
