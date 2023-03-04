@@ -37,110 +37,120 @@
             padding-right: 120px;
         }
 
+        .footer {
+            background-color: #2b394d;
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom:0;
+        }
     </style>
 </head>
 <body>
-<div style="background-color: #BBE1FA">
-    <div class="container">
-        <header class="d-flex align-items-center justify-content-center justify-content-md-between py-3 border-bottom flex-grow-1">
-            <a href="/" class="d-flex flex-grow-0 align-items-center">
-                <!---href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" --->
-                <img class="bi me-2" width="60" src="../static/media/homepage_washing_machine.png" th:src="@{media/homepage_washing_machine.png}">
-            </a>
+    <div style="background-color: #BBE1FA;">
+        <div class="container">
+            <header class="d-flex align-items-center justify-content-center justify-content-md-between py-3 border-bottom flex-grow-1">
+                <a href="/" class="d-flex flex-grow-0 align-items-center">
+                    <!---href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" --->
+                    <img class="bi me-2" width="60" src="../static/media/homepage_washing_machine.png" th:src="@{media/homepage_washing_machine.png}">
+                </a>
 
-            <div class="col-md-3 text-end justify-content-evenly flex-grow-1">
-                <a th:href="@{/register}" class="btn btn-primary m-1">Registrieren</a>
-                <a th:href="@{/login}" class="btn btn-outline-primary m-1">Anmelden</a>
-                <a th:href="@{/list_users}" class="btn btn-outline-primary m-1">Als Gast anmelden</a> <!--coming soon--->
+                <div class="col-md-3 text-end justify-content-evenly flex-grow-1">
+                    <a th:href="@{/register}" class="btn btn-primary m-1">Registrieren</a>
+                    <a th:href="@{/login}" class="btn btn-outline-primary m-1">Anmelden</a>
+                    <a th:href="@{/guest}" class="btn btn-outline-primary m-1">Als Gast anmelden</a> <!--coming soon--->
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <div style="background-color: #2b394d">
+        <div class="container welcome">
+            <div class ="welcome_text">
+                <div class="header" style="font-size:32px; font-weight: 800" >Willkommen du Wäsche-Wascher!</div>
+                <div class="info_text" style="font-size: 18px; text-align: justify">In dieser WebApp hat jeder die Möglichkeit die Waschmaschinen für einen gewissen Zeitraum zu reservieren.
+                    Dazu ganz einfach anmelden bzw. registrieren und eine der beiden Waschmaschinen reservieren.</div>
+                <a href="/" class="btn btn-primary" style="width: 150px">Coming Soon!</a>
             </div>
-        </header>
+        </div>
     </div>
-</div>
+    <div class="d-flex justify-content-around" style="background-color: #1b263b">
+        <div style="color:white; font-size: xx-large">
+            Waschmaschine 1
+        </div>
+        <div style="color:white; font-size: xx-large">
+            Waschmaschine 2
+        </div>
+    </div>
+    <div class="justify-content-center fs-3" style="background-image: linear-gradient( #2b394d, #BBE1FA); color: white">
+        <div class=" d-flex justify-content-around">
+            <div class="wasch1">
+                <ul style="list-style-type: none">
+                    <li><span th:text="${timeHundredFifty}"></span>: <span th:text="${machineOneHundredFiftyMinutes}"></span></li>
+                    <li><span th:text="${timeHundredTwenty}"></span>: <span th:text="${machineOneHundredTwentyMinutes}"></span></li>
+                    <li><span th:text="${timeNinety}"></span>: <span th:text="${machineOneNinetyMinutes}"></span></li>
+                    <li><span th:text="${timeSixty}"></span>: <span th:text="${machineOneSixtyMinutes}"></span></li>
+                    <li><span th:text="${timeThirty}"></span>: <span th:text="${machineOneThirtyMinutes}"></span></li>
 
-<div style="background-color: #2b394d">
-    <div class="container welcome">
-        <div class ="welcome_text">
-            <div class="header" style="font-size:32px; font-weight: 800" >Willkommen du Wäsche-Wascher!</div>
-            <div class="info_text" style="font-size: 18px">In dieser WebApp hat jeder die Möglichkeit die Waschmaschinen für einen gewissen Zeitraum zu reservieren.
-                Dazu ganz einfach anmelden bzw. registrieren und eine der beiden Waschmaschinen reservieren.</div>
-            <a href="/" class="btn btn-primary m-1">Reservieren</a>
-        </div>
-        <img class="symbol_picture flex-grow-1 flex-shrink-0 rounded" width="200" height="a" src="../static/media/symbol_picture.png" th:src="@{media/symbol_picture.png}">
-    </div>
-</div>
-<div class="d-flex justify-content-center" style="background-color: #1b263b; gap:360px">
-    <div style="color:white; font-size: xx-large">
-        Waschmaschine 1
-    </div>
-    <div style="color:white; font-size: xx-large">
-        Waschmaschine 2
-    </div>
-</div>
-<div class="container justify-content-center pt-5">
-    <div class="d-flex justify-content-evenly">
-        <div class="wasch1">
-            <ul style="list-style-type: none">
-                <li><span th:text="${timeThirty}"></span>: <span th:text="${machineOneThirtyMinutes}"></span></li>
-                <li><span th:text="${timeSixty}"></span>: <span th:text="${machineOneSixtyMinutes}"></span></li>
-                <li><span th:text="${timeNinety}"></span>: <span th:text="${machineOneNinetyMinutes}"></span></li>
-                <li><span th:text="${timeHundredTwenty}"></span>: <span th:text="${machineOneHundredTwentyMinutes}"></span></li>
-                <li><span th:text="${timeHundredFifty}"></span>: <span th:text="${machineOneHundredFiftyMinutes}"></span></li>
 
-            </ul>
-        </div >
-        <div class="wasch2">
-            <ul style="list-style-type: none">
-                <li><span th:text="${timeThirty}"></span>: <span th:text="${machineTwoThirtyMinutes}"></span></li>
-                <li><span th:text="${timeSixty}"></span>: <span th:text="${machineTwoSixtyMinutes}"></span></li>
-                <li><span th:text="${timeNinety}"></span>: <span th:text="${machineTwoNinetyMinutes}"></span></li>
-                <li><span th:text="${timeHundredTwenty}"></span>: <span th:text="${machineTwoHundredTwentyMinutes}"></span></li>
-                <li><span th:text="${timeHundredFifty}"></span>: <span th:text="${machineTwoHundredFiftyMinutes}"></span></li>
-            </ul>
+                </ul>
+            </div >
+            <div class="wasch2">
+                <ul style="list-style-type: none">
+                    <li><span th:text="${timeHundredFifty}"></span>: <span th:text="${machineTwoHundredFiftyMinutes}"></span></li>
+                    <li><span th:text="${timeHundredTwenty}"></span>: <span th:text="${machineTwoHundredTwentyMinutes}"></span></li>
+                    <li><span th:text="${timeNinety}"></span>: <span th:text="${machineTwoNinetyMinutes}"></span></li>
+                    <li><span th:text="${timeSixty}"></span>: <span th:text="${machineTwoSixtyMinutes}"></span></li>
+                    <li><span th:text="${timeThirty}"></span>: <span th:text="${machineTwoThirtyMinutes}"></span></li>
+
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<div>
-    <div class="d-flex justify-content-center" style="gap:300px">
-        <div class="gif1 d-flex flex-md-column">
-            <img class="bi me-2" width="300" src="../static/media/washing_machine.gif" th:src="@{media/washing_machine.gif}">
+    <div>
+        <div class="d-flex justify-content-around">
+            <div class="gif1 d-flex flex-md-column">
+                <img class="bi me-2" width="300" src="../static/media/washing_machine.gif" th:src="@{media/washing_machine.gif}">
+            </div>
+            <div class="gif2 d-flex flex-md-column">
+                <img class="bi me-2" width="300" src="../static/media/washing_machine.gif" th:src="@{media/washing_machine.gif}">
+            </div>
         </div>
-        <div class="gif2 d-flex flex-md-column">
-            <img class="bi me-2" width="300" src="../static/media/washing_machine.gif" th:src="@{media/washing_machine.gif}">
+        <div class="pb-5 d-flex justify-content-around fs-3">
+            <div><span th:text="${machineOneNow}"></span></div>
+            <div><span th:text="${machineTwoNow}"></span></div>
+        </div>
+        <div><span th:text="${loggedInUser}"></span></div>
+
+    </div>
+    <div class="d-flex flex-column" style="background-color: #06283D; padding: 80px 0">
+        <div class="d-flex gap-6 justify-content-evenly flex-wrap">
+            <div class="box1">
+                <div class="pic"></div>
+                <div class="text"> this is a placeholder</div>
+            </div>
+            <div class="box2">
+                <div class="pic"></div>
+                <div class="text"> this is a placeholder</div>
+            </div>
+            <div class="box3">
+                <div class="pic"></div>
+                <div class="text"> this is a placeholder</div>
+            </div>
+            <div class="box4">
+                <div class="pic"></div>
+                <div class="text"> this is a placeholder</div>
+            </div>
         </div>
     </div>
-    <div class="pb-5">
-        <div><span th:text="${machineOneNow}"></span></div>
-        <div><span th:text="${machineTwoNow}"></span></div>
-    </div>
-    <p>
-        Welcome back <span th:text="${loggedInUser}"></span>
-    </p>
-</div>
-<div class="d-flex flex-column" style="background-color: #06283D; padding: 80px 0">
-    <div class="d-flex gap-6 justify-content-evenly flex-wrap">
-        <div class="box1">
-            <div class="pic"></div>
-            <div class="text"> this is a placeholder</div>
-        </div>
-        <div class="box2">
-            <div class="pic"></div>
-            <div class="text"> this is a placeholder</div>
-        </div>
-        <div class="box3">
-            <div class="pic"></div>
-            <div class="text"> this is a placeholder</div>
-        </div>
-        <div class="box4">
-            <div class="pic"></div>
-            <div class="text"> this is a placeholder</div>
+    <div style="background-color: #e0e1dd" class="py-5">
+        <div class="container d-flex flex-column">
+            <div class="align-self-end" style="font-size: 36px; font-style: italic; font-weight: 300">Waschmaschinen leben länger mit Calgon</div>
+            <div class="align-self-end" style="font-weight: 800">-Calgon Mitarbeiter</div>
         </div>
     </div>
-</div>
-<div style="background-color: #e0e1dd" class="py-5">
-    <div class="container d-flex flex-column">
-        <div class="align-self-end" style="font-size: 36px; font-style: italic; font-weight: 300">Waschmaschinen leben länger mit Calgon</div>
-        <div class="align-self-end" style="font-weight: 800">-Calgon Mitarbeiter</div>
-    </div>
-</div>
+    <div class="footer"> Copyright © Waschmaschinenprojekt 2023</div>
 </body>
 </html>
