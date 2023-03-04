@@ -7,6 +7,19 @@
 </head>
 <body>
 <section class="vh-100" style="background-color: #cdebf9">
+  <div class="container">
+    <header class="d-flex align-items-center justify-content-center justify-content-md-between py-3 border-bottom flex-grow-1">
+      <a href="/" class="d-flex flex-grow-0 align-items-center">
+        <img class="bi me-2" width="60" src="../static/media/homepage_washing_machine.png" th:src="@{media/homepage_washing_machine.png}">
+      </a>
+
+      <div class="col-md-3 text-end justify-content-evenly flex-grow-1">
+        <a th:href="@{/register}" class="btn btn-primary m-1">Registrieren</a>
+        <a th:href="@{/login}" class="btn btn-outline-primary m-1">Anmelden</a>
+        <a th:href="@{/guest}" class="btn btn-outline-primary m-1">Als Gast anmelden</a>
+      </div>
+    </header>
+  </div>
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-12 col-lg-9 col-xl-7">

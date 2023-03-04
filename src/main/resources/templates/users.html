@@ -6,6 +6,20 @@
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
 </head>
 <body>
+<div style="background-color: #cdebf9">
+  <header class="container d-flex align-items-center justify-content-center justify-content-md-between py-3 border-bottom flex-grow-1">
+    <a href="/" class="d-flex flex-grow-0 align-items-center">
+      <!---href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" --->
+      <img class="bi me-2" width="60" src="../static/media/homepage_washing_machine.png" th:src="@{media/homepage_washing_machine.png}">
+    </a>
+
+    <div class="col-md-3 text-end justify-content-end d-flex">
+      <form th:action="@{/logout}" method="post">
+        <input type="submit" class="btn btn-primary m-1" value="Logout">
+      </form>
+    </div>
+  </header>
+</div>
 <div class="container text-center">
   <div class="container text-center">
     <div>
