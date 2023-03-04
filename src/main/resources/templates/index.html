@@ -50,7 +50,7 @@
 </head>
 <body>
     <div style="background-color: #BBE1FA;">
-        <div class="container">
+        <div class="container" th:if="${!isAuthenticated}">
             <header class="d-flex align-items-center justify-content-center justify-content-md-between py-3 border-bottom flex-grow-1">
                 <a href="/" class="d-flex flex-grow-0 align-items-center">
                     <!---href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" --->
@@ -60,7 +60,24 @@
                 <div class="col-md-3 text-end justify-content-evenly flex-grow-1">
                     <a th:href="@{/register}" class="btn btn-primary m-1">Registrieren</a>
                     <a th:href="@{/login}" class="btn btn-outline-primary m-1">Anmelden</a>
-                    <a th:href="@{/guest}" class="btn btn-outline-primary m-1">Als Gast anmelden</a> <!--coming soon--->
+                    <a th:href="@{/guest}" class="btn btn-outline-primary m-1">Als Gast anmelden</a>
+                </div>
+            </header>
+        </div>
+        <div class="container" th:if="${isAuthenticated}">
+            <header class="d-flex align-items-center justify-content-center justify-content-md-between py-3 border-bottom flex-grow-1">
+                <a href="/" class="d-flex flex-grow-0 align-items-center">
+                    <!---href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" --->
+                    <img class="bi me-2" width="60" src="../static/media/homepage_washing_machine.png" th:src="@{media/homepage_washing_machine.png}">
+                </a>
+
+                <div class="col-md-3 text-end justify-content-end d-flex">
+                    <form th:if="${isAdmin}" th:action="@{/list_users}" method="get">
+                        <input type="submit" class="btn btn-primary m-1" value="UserListe">
+                    </form>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" class="btn btn-primary m-1" value="Logout">
+                    </form>
                 </div>
             </header>
         </div>
@@ -69,10 +86,12 @@
     <div style="background-color: #2b394d">
         <div class="container welcome">
             <div class ="welcome_text">
-                <div class="header" style="font-size:32px; font-weight: 800" >Willkommen du Wäsche-Wascher!</div>
+                <div th:if="${!isAuthenticated}" class="header" style="font-size:32px; font-weight: 800" >Willkommen du Wäsche-Wascher!</div>
+                <div th:if="${isAuthenticated}" class="header" style="font-size:32px; font-weight: 800" >Willkommen zurück <span th:text="${loggedUser}"></span>!</div>
+
                 <div class="info_text" style="font-size: 18px; text-align: justify">In dieser WebApp hat jeder die Möglichkeit die Waschmaschinen für einen gewissen Zeitraum zu reservieren.
                     Dazu ganz einfach anmelden bzw. registrieren und eine der beiden Waschmaschinen reservieren.</div>
-                <a href="/" class="btn btn-primary" style="width: 150px">Coming Soon!</a>
+                <a href="/" class="btn btn-primary mt-4" style="width: 150px">Coming Soon!</a>
             </div>
         </div>
     </div>
@@ -122,8 +141,6 @@
             <div><span th:text="${machineOneNow}"></span></div>
             <div><span th:text="${machineTwoNow}"></span></div>
         </div>
-        <div><span th:text="${loggedInUser}"></span></div>
-
     </div>
     <div class="d-flex flex-column" style="background-color: #06283D; padding: 80px 0">
         <div class="d-flex gap-6 justify-content-evenly flex-wrap">
